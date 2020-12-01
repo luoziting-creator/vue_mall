@@ -18,6 +18,7 @@ import DetailShopInfo from "./detailcomp/DetailShopInfo";
 import DetailGoodsInfo from "./detailcomp/DetailGoodsInfo";
 import DetailParamsInfo from "./detailcomp/DetainParamsInfo";
 
+
 import Scroll from "components/common/scroll/Scroll";
 
 

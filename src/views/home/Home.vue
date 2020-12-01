@@ -204,7 +204,6 @@ export default {
     }
   },
   activated(){
-  
     this.$refs.scroll.scrollTo(0,this.saveY,0)
     this.$refs.scroll.refresh()
     
