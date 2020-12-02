@@ -57,6 +57,7 @@ import BackTop from "components/content/backtop/BackTop";
 
 import { getHomeMultidata, getHomeGoods } from "network/home";
 import {debounce} from "common/utils";
+import {itemListenerMixin} from "common/mixin";
 
 export default {
   name: "Home",
@@ -74,8 +75,11 @@ export default {
       tabOffsetTop:0,
       isTabFixed:false,
       saveY:0,
+      // 在mixin中
+      // itemImgListener:null
     };
   },
+  mixins: [itemListenerMixin],
   created() {
     // 网络请求相关的方法
     //  请求多个数据
@@ -94,11 +98,12 @@ export default {
   // 可以将refresh函数传入到debounce函数中，生成一个新的函数
   // 之后在调用非常频繁的时候，就是用新生成的函数，而新生成的函数，并不会频繁的调用，如果下一次执行来得非常的快，那么会将上一次取消掉
   mounted() {
-    const refresh = debounce(this.$refs.scroll.refresh,50)
-    //监听item中图片加载完成
-    this.$bus.$on("itemImageLoad", () => { 
-      refresh()
-    });
+    // const refresh = debounce(this.$refs.scroll.refresh,50)
+    // //监听item中图片加载完成
+    // this.itemImgListener=() => { 
+    //   refresh()
+    // }
+    // this.$bus.$on("itemImageLoad", this.itemImgListener);
    
 
   },
@@ -210,7 +215,10 @@ export default {
 
   },
   deactivated(){
+    // 1.保存Y值
      this.saveY=this.$refs.scroll.getScrollY()
+    //  2.取消全局事件的监听,不能只传一个事件，后面还要传一个函数
+    this.$bus.$off('itemImageLoad',this.itemImgListener)
 
   },
    

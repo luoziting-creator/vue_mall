@@ -44,3 +44,14 @@ export class GoodsParams{
 
   }
 }
+
+
+// 推荐是另外一个接口
+export function getRecommend () {
+  return request ({
+    url:'/recommend',
+
+
+  })
+
+}

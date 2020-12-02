@@ -55,6 +55,7 @@ export default {
   .table-param{
     // border-top: 1px solid rgba(0,0,0,.1);
     .info-params-key {
+      // 一定要给
       width: 95px;
 
     }
