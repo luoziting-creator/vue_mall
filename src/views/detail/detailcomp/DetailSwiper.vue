@@ -1,12 +1,15 @@
 <template>
-    <swiper class="detail">
-      <swiper-item v-for="(item, index) in topImages" :key="index">
-          <img :src="item" alt="">
-      </swiper-item>
-    </swiper>
+  
+     <!--轮播图区域区域-->
+    <mt-swipe :auto="4000" class="detail">
+        <mt-swipe-item v-for="(item, index) in topImages" :key="index">
+            <img :src="item" alt="" id="bg" >
+        </mt-swipe-item>     
+    </mt-swipe>
+    
 </template>
 <script>
-import { Swiper, SwiperItem } from "components/common/swiper";
+
 export default {
   data() {
     return {};
@@ -20,15 +23,27 @@ export default {
     }
   },
   components: {
-    Swiper,
-    SwiperItem
+    
   },
   methods: {}
 };
 </script>
 <style lang="less" scoped>
-.detail {
-  height: 300px;
-  overflow: hidden;
+
+.mint-swipe {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
 }
+
+.mt-swipe-item img {
+    width: 100%;
+    height: 100%;
+}
+
+#bg {
+    width: 100%;
+    height: 100%;
+}
+
 </style>

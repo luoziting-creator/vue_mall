@@ -1,15 +1,13 @@
 <template>
-  <!--轮播图区域-->
-  <swiper>
-    <swiper-item v-for="(item, index) in banners" :key="index">
-      <a href="#">
-        <img :src="item.image" alt="" @load="imageLoad" />
-      </a>
-    </swiper-item>
-  </swiper>
+  <!--轮播图区域区域-->
+    <mt-swipe :auto="4000" class="">
+        <mt-swipe-item v-for="(item, index) in banners" :key="index">
+            <img :src="item.image" alt="" @load="imageLoad" id="bg">
+        </mt-swipe-item>     
+    </mt-swipe>
 </template>
 <script>
-import { Swiper, SwiperItem } from "components/common/swiper";
+
 export default {
   name: "HomeSwiper",
   props: {
@@ -26,8 +24,7 @@ export default {
     };
   },
   components: {
-    Swiper,
-    SwiperItem
+   
   },
 
   methods: {
@@ -41,4 +38,20 @@ export default {
   }
 };
 </script>
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.mint-swipe {
+    position: relative;
+    height: 200px;
+}
+
+.mt-swipe-item img {
+    width: 100%;
+    height: 100%;
+}
+
+#bg {
+    width: 100%;
+    height: 100%;
+}
+
+</style>

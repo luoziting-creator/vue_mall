@@ -8,7 +8,18 @@ const Profile = () => import('../views/profile/Profile')
 const Detail = () => import('../views/detail/Detail')
 const Login = () => import('../views/login/Login.vue')
 Vue.use(VueRouter)
+// 解决ElementUI导航栏中的vue-router在3.0版本以上重复点菜单报错问题
+//push 
+const VueRouterPush = VueRouter.prototype.push 
+VueRouter.prototype.push = function push (to) {
+    return VueRouterPush.call(this, to).catch(err => err)
+}
 
+//replace
+const VueRouterReplace = VueRouter.prototype.replace
+VueRouter.prototype.replace = function replace (to) {
+  return VueRouterReplace.call(this, to).catch(err => err)
+}
 const routes = [
   {
     path: '',
