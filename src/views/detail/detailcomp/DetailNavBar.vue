@@ -10,8 +10,7 @@
           :key="index"
           class="detailNavBarItem"
           @click="detailNavBarClick(index)"
-          :class="{active: currentindex === index}"
-        >
+          :class="{active:  index === currentIndex}">
           {{ item }}
         </div>
       </div>
@@ -26,7 +25,7 @@ export default {
   data() {
     return {
       titles: ["商品", "参数", "评论", "推荐"],
-      currentindex: 0
+      currentIndex: 0
     };
   },
   created() {},
@@ -35,7 +34,8 @@ export default {
   },
   methods: {
     detailNavBarClick(index) {
-      this.currentindex = index;
+      this.currentIndex = index;
+      this.$emit('titleClick',index)
     },
     backClick(){
       this.$router.back()

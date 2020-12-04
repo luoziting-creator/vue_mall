@@ -1,6 +1,6 @@
 <template>
   <div class="goods-item" @click="goodsListItem">
-    <img :src="showImage" alt="" @load="imageLoad"/>
+    <img v-lazy="showImage"  alt="" @load="imageLoad"/>
     <div class="goods-info">
       <p>{{ goodsItem.title }}</p>
       <span class="price">{{ goodsItem.price}}</span>
@@ -81,11 +81,12 @@ export default {
     .collect::before {
       content: '';
       position: absolute;
-      left: -15px;
-      top: -1px;
-      width: 14px;
-      height: 14px;
-      background-image: url("~assets/img/common/collect.svg")  ;
+      left: -13px;
+      top: 0px;
+      width: 12px;
+      height: 12px;
+      background: url("~assets/img/common/collect.svg") no-repeat;
+      background-size: contain;
     }
   }
 }

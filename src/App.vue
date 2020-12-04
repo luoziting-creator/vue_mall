@@ -3,7 +3,7 @@
     <keep-alive exclude="Detail">
       <router-view/>
     </keep-alive>
-    <main-tab-bar/>
+    <main-tab-bar  v-show="$route.meta.showFooter" />
   </div>
 </template>
 <script>
@@ -18,4 +18,5 @@ export default {
 </script>
 <style>
 @import "assets/css/base.css";
+
 </style>
