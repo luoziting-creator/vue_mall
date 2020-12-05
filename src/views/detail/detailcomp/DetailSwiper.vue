@@ -1,5 +1,4 @@
 <template>
-  
      <!--轮播图区域区域-->
     <mt-swipe :auto="4000" class="detail">
         <mt-swipe-item v-for="(item, index) in topImages" :key="index">

@@ -4,55 +4,66 @@
       <div class="login_header">
         <h2 class="login_logo">APP商城</h2>
         <div class="login_header_title">
-          <a href="javascript:;" class="on">短信登录</a>
-          <a href="javascript:;">密码登录</a>
+          <mt-navbar v-model="selected">
+            <mt-tab-item id="1">
+              <a href="javascript:;" class="on">短信登录</a></mt-tab-item
+            >
+            <mt-tab-item id="2">
+              <a href="javascript:;">密码登录</a></mt-tab-item
+            >
+          </mt-navbar>
         </div>
       </div>
+
       <div class="login_content">
-        <form>
-          <div class="on">
-            <section class="login_message">
-              <input type="tel" maxlength="11" placeholder="手机号" />
-              <button disabled="disabled" class="get_verification">
-                获取验证码
-              </button>
-            </section>
-            <section class="login_verification">
-              <input type="tel" maxlength="8" placeholder="验证码" />
-            </section>
-            <section class="login_hint">
-              温馨提示：未注册APP的手机号，登录时将自动注册，且代表已同意
-              <a href="javascript:;">《用户服务协议》</a>
-            </section>
-          </div>
-          <div>
-            <section>
+        <mt-tab-container v-model="selected" class="tab-container">
+          <mt-tab-container-item id="1" class="tab-container-item1">
+            <div class="on">
               <section class="login_message">
-                <input
-                  type="tel"
-                  maxlength="11"
-                  placeholder="手机/邮箱/用户名"
-                />
+                <input type="tel" maxlength="11" placeholder="手机号" />
+                <button disabled="disabled" class="get_verification">
+                  获取验证码
+                </button>
               </section>
               <section class="login_verification">
-                <input type="tel" maxlength="8" placeholder="密码" />
-                <div class="switch_button off">
-                  <div class="switch_circle"></div>
-                  <span class="switch_text">...</span>
-                </div>
+                <input type="tel" maxlength="8" placeholder="验证码" />
               </section>
-              <section class="login_message">
-                <input type="text" maxlength="11" placeholder="验证码" />
-                <img
-                  class="get_verification"
-                  src="./images/captcha.svg"
-                  alt="captcha"
-                />
+              <section class="login_hint">
+                温馨提示：未注册APP的手机号，登录时将自动注册，且代表已同意
+                <a href="javascript:;">《用户服务协议》</a>
               </section>
-            </section>
-          </div>
-          <button class="login_submit">登录</button>
-        </form>
+            </div>
+          </mt-tab-container-item>
+          <mt-tab-container-item id="2">
+            <div>
+              <section>
+                <section class="login_message">
+                  <input
+                    type="tel"
+                    maxlength="11"
+                    placeholder="手机/邮箱/用户名"
+                  />
+                </section>
+                <section class="login_verification">
+                  <input type="tel" maxlength="8" placeholder="密码" />
+                  <div class="switch_button off">
+                    <div class="switch_circle"></div>
+                    <span class="switch_text">...</span>
+                  </div>
+                </section>
+                <section class="login_message">
+                  <input type="text" maxlength="11" placeholder="验证码" />
+                  <img
+                    class="get_verification"
+                    src="./images/captcha.svg"
+                    alt="captcha"
+                  />
+                </section>
+              </section>
+            </div>
+          </mt-tab-container-item>
+        </mt-tab-container>
+        <button class="login_submit">登录</button>
         <a href="javascript:;" class="about_us">关于我们</a>
       </div>
       <a href="javascript:" class="go_back">
@@ -63,7 +74,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      selected: "1"
+    };
+  }
+};
 </script>
 
 <style lang="less" scoped>
@@ -100,19 +117,10 @@ export default {};
           margin-right: 40px;
         }
 
-        .on {
-          color: #ff8198;
-          font-weight: 700;
-          border-bottom: 2px solid #ff8198;
-        }
+        
       }
     }
 
-    .login_content > form > div {
-      display: none;
-
-      &.on {
-        display: block;
 
         input {
           width: 100%;
@@ -208,8 +216,8 @@ export default {};
             color: #ff8198;
           }
         }
-      }
-    }
+      
+   
 
     .login_submit {
       display: block;
@@ -248,5 +256,15 @@ export default {};
       }
     }
   }
+}
+.mint-navbar .mint-tab-item.is-selected {
+  border-bottom: 1px solid #ff8198;
+  color:#ff8198;
+}
+.mint-navbar .mint-tab-item {
+  padding: 5px;
+}
+.loginContainer .loginInner .login_header .login_header_title[data-v-2529d779] :first-child{
+  margin-right: 0;
 }
 </style>
